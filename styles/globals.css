@@ -171,7 +171,8 @@ button {
 
 @media (min-width: 769px) {
   .hero {
-    background-repeat: no-repeat;
+    background-image: url('/images/hero-bg.jpg');
+     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     aspect-ratio: 1536 / 1024;
