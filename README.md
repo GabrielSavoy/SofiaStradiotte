@@ -55,7 +55,7 @@ Alguns pontos específicos:
 - **Currículo**: até 6 entradas em Formação, Experiência e Cursos (linhas em branco
   simplesmente não aparecem no site), além de habilidades/softwares/idiomas em formato de
   tags e upload do PDF do currículo.
-- **Contato**: e-mail, Instagram, Pinterest, telefone, outros links e o texto da página.
+- **Contato**: e-mail, Instagram, LinkedIn, telefone, outros links e o texto da página.
   As mensagens enviadas pelo formulário de contato do site aparecem numa lista logo
   abaixo, com opção de marcar como lida ou excluir.
 - **Configurações**: trocar a própria senha.

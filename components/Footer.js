@@ -1,6 +1,6 @@
 export default function Footer({ contact }) {
   const instagram = contact?.instagram || "#";
-  const pinterest = contact?.pinterest || "#";
+  const linkedin = contact?.linkedin || "#";
   const email = contact?.email ? `mailto:${contact.email}` : "#";
 
   return (
@@ -9,8 +9,8 @@ export default function Footer({ contact }) {
         <a href={instagram} aria-label="Instagram" target="_blank" rel="noreferrer">
           📷
         </a>
-        <a href={pinterest} aria-label="Pinterest" target="_blank" rel="noreferrer">
-          📌
+        <a href={linkedin} aria-label="LinkedIn" target="_blank" rel="noreferrer">
+          💼
         </a>
         <a href={email} aria-label="E-mail">
           ✉️

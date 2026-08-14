@@ -34,8 +34,8 @@ export default function ContatoForm({ contact }) {
             <input id="instagram" name="instagram" type="text" defaultValue={contact.instagram} placeholder="https://instagram.com/..." />
           </div>
           <div className="field">
-            <label htmlFor="pinterest">Pinterest (link completo)</label>
-            <input id="pinterest" name="pinterest" type="text" defaultValue={contact.pinterest} placeholder="https://pinterest.com/..." />
+            <label htmlFor="linkedin">LinkedIn (link completo)</label>
+            <input id="linkedin" name="linkedin" type="text" defaultValue={contact.linkedin} placeholder="https://linkedin.com/..." />
           </div>
         </div>
         <div className="field">

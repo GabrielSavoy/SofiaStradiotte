@@ -251,5 +251,5 @@ insert into site_content (key, data) values (
 
 insert into site_content (key, data) values (
   'contact',
-  '{"email": "", "instagram": "", "pinterest": "", "phone": "", "other_links": [], "page_text": "Vamos conversar? Preencha o formulário abaixo ou me chame nas redes sociais."}'::jsonb
+  '{"email": "", "instagram": "", "linkedin": "", "phone": "", "other_links": [], "page_text": "Vamos conversar? Preencha o formulário abaixo ou me chame nas redes sociais."}'::jsonb
 ) on conflict (key) do nothing;

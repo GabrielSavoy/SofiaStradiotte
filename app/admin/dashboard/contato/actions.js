@@ -20,7 +20,7 @@ export async function saveContact(prevState, formData) {
   const data = {
     email: formData.get("email") || "",
     instagram: formData.get("instagram") || "",
-    pinterest: formData.get("pinterest") || "",
+    linkedin: formData.get("linkedin") || "",
     phone: formData.get("phone") || "",
     page_text: formData.get("page_text") || "",
     other_links,

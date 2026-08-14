@@ -11,7 +11,7 @@ export default async function ContatoPage() {
 
   const links = [
     contact.instagram ? { label: "Instagram", href: contact.instagram } : null,
-    contact.pinterest ? { label: "Pinterest", href: contact.pinterest } : null,
+    contact.linkedin ? { label: "LinkedIn", href: contact.linkedin } : null,
     contact.email ? { label: contact.email, href: `mailto:${contact.email}` } : null,
     contact.phone ? { label: contact.phone, href: `tel:${contact.phone}` } : null,
     ...(contact.other_links || []).map((l) => ({ label: l.label, href: l.url })),
