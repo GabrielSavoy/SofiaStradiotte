@@ -158,6 +158,10 @@ button {
 
 /* ===== HERO ===== */
 
+.hero-banner {
+  display: none;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -954,10 +958,18 @@ button {
     row-gap: 0;
     padding: 26px 22px 44px;
     text-align: left;
+    background-image: none;
+    background-color: #fde8e4;
+  }
+
+  .hero-banner {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1536 / 1024;
     background-image: url('/images/hero-bg.jpg');
     background-repeat: no-repeat;
-    background-position: top center;
-    background-size: contain;
+    background-position: center;
+    background-size: cover;
   }
 
   .hero-text {

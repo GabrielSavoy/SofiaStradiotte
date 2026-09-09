@@ -47,6 +47,16 @@ export default async function HomePage() {
     <div className="site-wrapper">
       <Navbar />
 
+      <div
+        className="hero-banner"
+        aria-hidden="true"
+        style={
+          home.hero_image_url
+            ? { backgroundImage: `url('${home.hero_image_url}')` }
+            : undefined
+        }
+      />
+
       <section
         className="hero"
         style={
