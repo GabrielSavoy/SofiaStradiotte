@@ -880,6 +880,12 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Com 5 cards em 2 colunas sobra 1 sozinho na ultima linha -- esse aqui
+     ocupa a linha inteira em vez de deixar buraco vazio do lado. */
+  .cards-grid .card:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+
   .hero-text h1 {
     font-size: 4rem;
   }
@@ -1000,7 +1006,7 @@ button {
   }
 
   .cards-grid {
-    grid-template-columns: 1fr;
+    gap: 14px;
     padding: 0 22px 40px;
   }
 
