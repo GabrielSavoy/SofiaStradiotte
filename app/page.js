@@ -65,7 +65,11 @@ export default async function HomePage() {
             : undefined
         }
       >
-        <div className="deco-stitch deco-needle">
+        <div className="crop-butterfly" aria-hidden="true" />
+        <div className="crop-bow" aria-hidden="true" />
+        <div className="crop-flower" aria-hidden="true" />
+
+                <div className="deco-stitch deco-needle">
           <svg viewBox="0 0 40 100" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
             <line x1="20" y1="10" x2="20" y2="88" />
             <ellipse cx="20" cy="8" rx="3" ry="5" />
@@ -125,8 +129,7 @@ export default async function HomePage() {
       </section>
 
       <section className="cards-grid">
-        <div className="mobile-mannequin" aria-hidden="true" />
-        {(home.cards || []).map((card, i) => (
+              {(home.cards || []).map((card, i) => (
           <div className="card" key={card.href || i}>
             <span className={`card-accent ${i === 2 ? "bottom-left" : "top-right"}`}>
               <svg viewBox="0 0 24 24" fill="currentColor">

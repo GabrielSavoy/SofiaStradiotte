@@ -7,6 +7,7 @@ export default function Footer({ contact }) {
 
   return (
     <footer className="footer">
+      <div className="footer-crop" aria-hidden="true" />
       <div className="socials">
         <a href={instagram} aria-label="Instagram" target="_blank" rel="noreferrer">
           📷
