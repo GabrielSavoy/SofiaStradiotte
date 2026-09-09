@@ -956,8 +956,8 @@ button {
     text-align: left;
     background-image: url('/images/hero-bg.jpg');
     background-repeat: no-repeat;
-    background-position: center 15%;
-    background-size: 190% auto;
+    background-position: top center;
+    background-size: contain;
   }
 
   .hero-text {
