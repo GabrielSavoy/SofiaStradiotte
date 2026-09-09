@@ -125,6 +125,7 @@ export default async function HomePage() {
       </section>
 
       <section className="cards-grid">
+        <div className="mobile-mannequin" aria-hidden="true" />
         {(home.cards || []).map((card, i) => (
           <div className="card" key={card.href || i}>
             <span className={`card-accent ${i === 2 ? "bottom-left" : "top-right"}`}>

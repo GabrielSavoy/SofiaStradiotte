@@ -296,9 +296,43 @@ button {
   transform: rotate(10deg);
 }
 
+.mobile-mannequin {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .deco-stitch {
-    display: none;
+  .deco-needle {
+    top: 4%;
+    left: auto;
+    right: 6%;
+    width: 28px;
+    opacity: 0.5;
+  }
+
+  .deco-pin {
+    bottom: auto;
+    top: 96%;
+    left: 10%;
+    width: 26px;
+    opacity: 0.4;
+  }
+
+  .mobile-mannequin {
+    display: block;
+    position: absolute;
+    top: -46px;
+    right: 14px;
+    width: 64px;
+    aspect-ratio: 250 / 340;
+    background-image: url('/images/mannequin-clean.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    opacity: 0.55;
+    transform: rotate(6deg);
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
   }
 }
 
