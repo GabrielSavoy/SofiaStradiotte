@@ -956,8 +956,8 @@ button {
     text-align: left;
     background-image: url('/images/hero-bg.jpg');
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-position: center 15%;
+    background-size: 190% auto;
   }
 
   .hero-text {
@@ -1016,6 +1016,8 @@ button {
   .cards-grid {
     gap: 14px;
     padding: 0 22px 40px;
+    margin-top: -26px;
+    position: relative;
   }
 
   .footer {
