@@ -324,16 +324,16 @@ button {
   .cards-grid::before {
     content: "";
     position: absolute;
-    top: -44px;
-    right: 10px;
-    width: 60px;
-    height: 65px;
+    top: -60px;
+    right: 12px;
+    width: 40px;
+    height: 95px;
     background-image: url('/images/hero-bg.jpg');
     background-repeat: no-repeat;
-    background-size: 260px 173px;
-    background-position: -199px -108px;
+    background-size: 267px 179px;
+    background-position: -217px -83px;
     opacity: 0.6;
-    transform: rotate(6deg);
+    transform: rotate(3deg);
     pointer-events: none;
     z-index: 0;
   }
@@ -373,14 +373,14 @@ button {
   .crop-flower {
     display: block;
     position: absolute;
-    bottom: -6%;
-    left: -4%;
+    bottom: 4%;
+    left: 3%;
     width: 48px;
     height: 80px;
     background-image: url('/images/hero-bg.jpg');
     background-repeat: no-repeat;
     background-size: 307px 205px;
-    background-position: 0px -132px;
+    background-position: 0px -120px;
     opacity: 0.7;
     pointer-events: none;
     transform: rotate(-8deg);
