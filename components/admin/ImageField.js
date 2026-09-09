@@ -2,16 +2,21 @@
 
 import { useState } from "react";
 
-// Campo de upload reutilizável. Mostra a imagem atual (se houver) e deixa
-// escolher um arquivo novo. O upload de verdade acontece no servidor,
-// dentro da Server Action que recebe o <form>, então nenhuma chave do
-// Supabase precisa ficar exposta no navegador.
 export default function ImageField({ name, label, currentUrl, hint, accept = "image/*" }) {
   const [preview, setPreview] = useState(currentUrl || "");
+  const [removed, setRemoved] = useState(false);
 
   function handleChange(e) {
     const file = e.target.files?.[0];
-    if (file) setPreview(URL.createObjectURL(file));
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+      setRemoved(false);
+    }
+  }
+
+  function handleRemove() {
+    setPreview("");
+    setRemoved(true);
   }
 
   return (
@@ -33,6 +38,26 @@ export default function ImageField({ name, label, currentUrl, hint, accept = "im
         />
       ) : null}
       <input id={name} name={name} type="file" accept={accept} onChange={handleChange} />
+      {currentUrl && !removed ? (
+        <button
+          type="button"
+          onClick={handleRemove}
+          style={{
+            display: "block",
+            marginTop: 8,
+            background: "none",
+            border: "none",
+            padding: 0,
+            color: "var(--danger, #c0392b)",
+            textDecoration: "underline",
+            cursor: "pointer",
+            fontSize: "0.9rem",
+          }}
+        >
+          Remover foto atual
+        </button>
+      ) : null}
+      {removed ? <input type="hidden" name={`${name}_remove`} value="1" /> : null}
       {hint ? <p className="field-hint">{hint}</p> : null}
     </div>
   );

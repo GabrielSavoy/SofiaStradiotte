@@ -45,6 +45,7 @@ export async function updateProject(prevState, formData) {
   const id = formData.get("id");
 
   const coverFile = formData.get("cover_image");
+  const removeCover = formData.get("cover_image_remove") === "1";
   const updates = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -54,7 +55,21 @@ export async function updateProject(prevState, formData) {
   };
 
   if (coverFile && coverFile.size > 0) {
+    const { data: existing } = await supabase
+      .from("portfolio_projects")
+      .select("cover_image_url")
+      .eq("id", id)
+      .single();
     updates.cover_image_url = await uploadImage(coverFile, "portfolio");
+    if (existing?.cover_image_url) await deleteFileByUrl(existing.cover_image_url);
+  } else if (removeCover) {
+    const { data: existing } = await supabase
+      .from("portfolio_projects")
+      .select("cover_image_url")
+      .eq("id", id)
+      .single();
+    if (existing?.cover_image_url) await deleteFileByUrl(existing.cover_image_url);
+    updates.cover_image_url = null;
   }
 
   const { error } = await supabase.from("portfolio_projects").update(updates).eq("id", id);

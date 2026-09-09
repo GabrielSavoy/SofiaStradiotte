@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth";
 import { getHomeContent, saveSiteContent } from "@/lib/content";
-import { uploadImage } from "@/lib/storage";
+import { uploadImage, deleteFileByUrl } from "@/lib/storage";
 
 export async function saveHome(prevState, formData) {
   await requireUser();
@@ -12,10 +12,26 @@ export async function saveHome(prevState, formData) {
 
   const heroFile = formData.get("hero_image");
   const profileFile = formData.get("profile_photo");
+  const removeHero = formData.get("hero_image_remove") === "1";
+  const removeProfile = formData.get("profile_photo_remove") === "1";
 
-  const heroUrl = heroFile && heroFile.size > 0 ? await uploadImage(heroFile, "home") : current.hero_image_url;
-  const profileUrl =
-    profileFile && profileFile.size > 0 ? await uploadImage(profileFile, "home") : current.profile_photo_url;
+  let heroUrl = current.hero_image_url;
+  if (heroFile && heroFile.size > 0) {
+    heroUrl = await uploadImage(heroFile, "home");
+    if (current.hero_image_url) await deleteFileByUrl(current.hero_image_url);
+  } else if (removeHero) {
+    if (current.hero_image_url) await deleteFileByUrl(current.hero_image_url);
+    heroUrl = null;
+  }
+
+  let profileUrl = current.profile_photo_url;
+  if (profileFile && profileFile.size > 0) {
+    profileUrl = await uploadImage(profileFile, "home");
+    if (current.profile_photo_url) await deleteFileByUrl(current.profile_photo_url);
+  } else if (removeProfile) {
+    if (current.profile_photo_url) await deleteFileByUrl(current.profile_photo_url);
+    profileUrl = null;
+  }
 
   const cards = current.cards.map((card, i) => ({
     title: formData.get(`card_title_${i}`) || card.title,

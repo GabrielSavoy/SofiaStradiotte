@@ -942,23 +942,61 @@ button {
   }
 
   .hero {
-    grid-template-columns: 1fr;
-    padding: 20px 22px 50px;
-    text-align: center;
+    grid-template-columns: 100px 1fr;
+    align-items: start;
+    column-gap: 16px;
+    row-gap: 0;
+    padding: 26px 22px 44px;
+    text-align: left;
   }
 
-  .hero-text .desc {
-    margin-left: auto;
-    margin-right: auto;
+  .hero-text {
+    display: contents;
+  }
+
+  .hero-text .eyebrow {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.05rem;
+    margin-bottom: 2px;
   }
 
   .hero-text h1 {
-    font-size: 3.2rem;
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 2.3rem;
+    margin: 0 0 4px;
+  }
+
+  .hero-text .desc {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin: 16px 0 20px;
+    max-width: none;
+    text-align: left;
+  }
+
+  .hero-text .btn-primary {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-self: start;
   }
 
   .hero-image {
-    order: -1;
-    min-height: 320px;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  .polaroid {
+    width: 100px;
+    padding: 6px 6px 16px;
+    transform: rotate(-4deg);
+  }
+
+  .polaroid .tape {
+    display: none;
   }
 
   .cards-grid {

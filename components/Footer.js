@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer({ contact }) {
   const instagram = contact?.instagram || "#";
   const linkedin = contact?.linkedin || "#";
@@ -17,10 +19,18 @@ export default function Footer({ contact }) {
         </a>
       </div>
       <div className="footer-center">
-        <p>🩷 Feito com amor 🩷</p>
+        <p>🫂 Feito com amor 🫂</p>
         <p>© {new Date().getFullYear()} Sofia Stradiotte. Todos os direitos reservados.</p>
       </div>
-      <div className="footer-deco">🎀</div>
+      <Link
+        href="/admin"
+        className="footer-deco"
+        aria-hidden="true"
+        tabIndex={-1}
+        style={{ textDecoration: "none", cursor: "default" }}
+      >
+        🎀
+      </Link>
     </footer>
   );
 }
