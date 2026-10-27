@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { updatePhotoDetails, deletePhoto, movePhoto } from "@/app/admin/dashboard/fotos/actions";
 
-export default function PhotoCard({ photo, index = 0, total = 1 }) {
+export default function PhotoCard({ photo, index = 0, total = 1, handleProps }) {
   const [title, setTitle] = useState(photo.title || "");
   const [caption, setCaption] = useState(photo.caption || "");
 
   return (
     <div className="admin-photo-card">
-      <div className="ph">
+      <div className="ph" {...handleProps} style={handleProps ? { cursor: "grab", touchAction: "manipulation" } : undefined}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={photo.image_url} alt={photo.title || ""} />
       </div>

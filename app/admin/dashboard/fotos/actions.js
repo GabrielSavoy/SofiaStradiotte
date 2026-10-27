@@ -14,8 +14,10 @@ export async function registerPhotos(urls) {
   const list = (Array.isArray(urls) ? urls : []).filter((u) => typeof u === "string" && u);
   if (!list.length) return;
 
+  // Fotos novas entram no começo: ficam antes da menor posição atual.
   const existing = await getGalleryPhotos();
-  const start = existing.length;
+  const first = existing.length ? existing[0].order_index : 0;
+  const start = first - list.length;
 
   await supabase.from("gallery_photos").insert(
     list.map((image_url, i) => ({ image_url, order_index: start + i }))
@@ -72,6 +74,19 @@ export async function movePhoto(formData) {
 
   await supabase.from("gallery_photos").update({ order_index: b.order_index }).eq("id", a.id);
   await supabase.from("gallery_photos").update({ order_index: a.order_index }).eq("id", b.id);
+
+  revalidatePath("/fotos");
+  revalidatePath("/admin/dashboard/fotos");
+}
+
+export async function reorderPhotos(ids) {
+  await requireUser();
+  const supabase = createClient();
+  if (!Array.isArray(ids)) return;
+
+  await Promise.all(
+    ids.map((id, i) => supabase.from("gallery_photos").update({ order_index: i }).eq("id", id))
+  );
 
   revalidatePath("/fotos");
   revalidatePath("/admin/dashboard/fotos");

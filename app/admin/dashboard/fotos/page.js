@@ -1,5 +1,5 @@
 import { getGalleryPhotos } from "@/lib/content";
-import PhotoCard from "@/components/admin/PhotoCard";
+import PhotoGrid from "@/components/admin/PhotoGrid";
 import PhotoUploader from "@/components/admin/PhotoUploader";
 
 export const revalidate = 0;
@@ -26,11 +26,7 @@ export default async function AdminFotosPage() {
         {photos.length === 0 ? (
           <p className="empty-admin">Nenhuma foto adicionada ainda.</p>
         ) : (
-          <div className="admin-photo-grid">
-            {photos.map((photo, i) => (
-              <PhotoCard photo={photo} index={i} total={photos.length} key={photo.id} />
-            ))}
-          </div>
+          <PhotoGrid photos={photos} />
         )}
       </div>
     </div>
