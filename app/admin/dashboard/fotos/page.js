@@ -1,6 +1,6 @@
 import { getGalleryPhotos } from "@/lib/content";
-import { addPhotos } from "./actions";
 import PhotoCard from "@/components/admin/PhotoCard";
+import PhotoUploader from "@/components/admin/PhotoUploader";
 
 export const revalidate = 0;
 
@@ -18,13 +18,7 @@ export default async function AdminFotosPage() {
 
       <div className="admin-card">
         <h2>Adicionar fotos</h2>
-        <form action={addPhotos} className="upload-dropzone">
-          <p>Selecione uma ou mais imagens.</p>
-          <input type="file" name="photos" accept="image/*" multiple required />
-          <div style={{ marginTop: 12 }}>
-            <button type="submit" className="btn-primary">Enviar</button>
-          </div>
-        </form>
+        <PhotoUploader />
       </div>
 
       <div className="admin-card">

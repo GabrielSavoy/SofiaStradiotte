@@ -4,23 +4,22 @@ import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { getGalleryPhotos } from "@/lib/content";
-import { uploadImage, deleteFileByUrl } from "@/lib/storage";
+import { deleteFileByUrl } from "@/lib/storage";
 
-export async function addPhotos(formData) {
+// Recebe URLs de fotos já enviadas direto do navegador para o Storage
+// (ver components/admin/PhotoUploader.js) e só grava no banco.
+export async function registerPhotos(urls) {
   await requireUser();
   const supabase = createClient();
-  const files = formData.getAll("photos").filter((f) => f && f.size > 0);
+  const list = (Array.isArray(urls) ? urls : []).filter((u) => typeof u === "string" && u);
+  if (!list.length) return;
 
   const existing = await getGalleryPhotos();
-  let nextOrder = existing.length;
+  const start = existing.length;
 
-  for (const file of files) {
-    const url = await uploadImage(file, "galeria");
-    await supabase.from("gallery_photos").insert({
-      image_url: url,
-      order_index: nextOrder++,
-    });
-  }
+  await supabase.from("gallery_photos").insert(
+    list.map((image_url, i) => ({ image_url, order_index: start + i }))
+  );
 
   revalidatePath("/fotos");
   revalidatePath("/admin/dashboard/fotos");
